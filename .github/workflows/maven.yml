@@ -27,6 +27,12 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean install
+    - name: Login to Docker hub
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+    - name: Build docker image
+      run: docker build -t hkavindu64/demo-cicd .
+    - name: Publish image to docker hub
+      run: docker push hkavindu64/demo-cicd:latest
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
 #    - name: Update dependency graph
