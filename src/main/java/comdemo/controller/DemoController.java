@@ -13,4 +13,9 @@ public class DemoController {
     public ResponseEntity<String> getDemo() {
         return ResponseEntity.ok("Hello World");
     }
+
+    @GetMapping("/testing")
+    public ResponseEntity<String> getDemo2() {
+        return ResponseEntity.ok("testing...");
+    }
 }
